@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Submit Complaint{% endblock %}{% block content %}
+<section class="hero"><div><p class="eyebrow">A BETTER CAMPUS STARTS WITH YOUR VOICE</p><h1>Tell us what's<br><span>not working.</span></h1><p class="hero-copy">Submit a complaint and let our classifier route it to the most relevant category.</p><div class="hero-pills"><span>✦ AI-assisted category</span><span>↗ Track by ID</span><span>✓ Anonymous option</span></div></div>
+<div class="hero-card"><div class="orb">✦</div><p class="small-label">CAMPUSCARE AI</p><h3>Every concern<br>deserves attention.</h3><p class="muted">Your complaint is categorized automatically so the right team can review it.</p><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></section>
+<section class="form-section"><div class="section-heading"><div><p class="eyebrow">COMPLAINT FORM</p><h2>Submit a concern</h2></div><span class="step">01 / 01</span></div>
+<form action="{{ url_for('submit') }}" method="post" class="complaint-form"><div class="form-grid">
+<label>Student name <span>* unless anonymous</span><input name="student_name" maxlength="100" placeholder="Enter your name"></label>
+<label>College email <small>(optional)</small><input name="student_email" type="email" maxlength="150" placeholder="you@college.edu"></label>
+<label class="full">Department / year <small>(optional)</small><input name="department" maxlength="100" placeholder="e.g. CSE, 2nd year"></label>
+<label class="full">Describe your complaint <span>*</span><textarea name="complaint_text" required minlength="8" maxlength="3000" rows="5" placeholder="Explain what happened, where it happened, and any useful details..."></textarea><small>Avoid passwords or unnecessary sensitive personal information.</small></label>
+<label class="checkbox-label full"><input type="checkbox" name="anonymous"> Submit anonymously (your name and email will not be stored)</label>
+</div><div class="form-bottom"><p><span class="live-dot"></span> Category and priority are predicted automatically.</p><button class="button" type="submit">Submit complaint <b>↗</b></button></div></form></section>
+<section class="category-strip"><div><strong>01</strong><span>Academics</span></div><div><strong>02</strong><span>Infrastructure</span></div><div><strong>03</strong><span>IT & Wi-Fi</span></div><div><strong>04</strong><span>Campus services</span></div></section>{% endblock %}

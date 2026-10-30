@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}Admin Login{% endblock %}{% block content %}
+<section class="login-card"><div class="success-icon">⌁</div><p class="eyebrow">RESTRICTED AREA</p><h1>Admin <span>login.</span></h1><p class="muted">Sign in to manage complaints and view analytics.</p>
+<form method="post" class="login-form"><label>Username<input name="username" required autocomplete="username" placeholder="Admin username"></label><label>Password<input name="password" type="password" required autocomplete="current-password" placeholder="Password"></label><button class="button" type="submit">Sign in ↗</button></form><p class="login-hint">Demo credentials are listed in README.md. Change them before any real deployment.</p></section>{% endblock %}

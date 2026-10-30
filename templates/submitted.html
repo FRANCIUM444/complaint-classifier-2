@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block title %}Complaint Submitted{% endblock %}{% block content %}
+<section class="result-card"><div class="success-icon">✓</div><p class="eyebrow">SUBMISSION COMPLETE</p><h1>Your voice has<br><span>been received.</span></h1><p class="muted">Your complaint has been saved and classified. Keep your complaint ID to check its status later.</p>
+<div class="ticket"><small>YOUR COMPLAINT ID</small><strong>#{{ complaint_id }}</strong><span>Save this number for tracking</span></div>
+<div class="result-grid"><div><small>PREDICTED CATEGORY</small><strong>{{ category }}</strong></div><div><small>SUGGESTED PRIORITY</small><strong class="priority-{{ priority|lower }}">{{ priority }}</strong></div></div>
+<div class="confidence-box email-routing-box">
+<span>Department email routing</span>
+{% if email_status == "sent" %}
+<strong>Email sent</strong><small>Forwarded to {{ email_recipient }}.</small>
+{% elif email_status.startswith("not_configured") %}
+<strong>Email not configured</strong><small>Your complaint is saved, but email forwarding needs SMTP settings and a department address.</small>
+{% else %}
+<strong>Email delivery failed</strong><small>Your complaint is saved. Please contact the administrator; server logs may contain details.</small>
+{% endif %}
+</div>
+<div class="confidence-box"><span>Model confidence estimate</span><strong>{{ confidence }}%</strong><small>This is not a guarantee that the category is correct.</small></div>
+<div class="actions"><a class="button" href="{{ url_for('track') }}">Track complaint ↗</a><a class="button secondary" href="{{ url_for('index') }}">Submit another</a></div></section>{% endblock %}
